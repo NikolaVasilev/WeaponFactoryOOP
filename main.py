@@ -37,7 +37,8 @@ def display_main_menu():
 def list_instances_menu():
     pyautogui.hotkey('ctrl', ';')
     # available operations
-    print('These are available weapons you can see detailed info by choosing the number in front of them:\n')
+    print('These are available weapons. You are able to see detailed info by them, choosing the number in front of '
+          'them:\n')
     for index, instance in enumerate(list_of_weapon_objects):
         print(f"{index + 1} - {instance}")
     exit_option = len(list_of_weapon_objects) + 1
@@ -63,7 +64,7 @@ def create_instance(index: str, class_dict: list, create_menu: dict):
     return list_of_weapon_objects.append(object_instance)
 
 
-# input validations
+# add input validations
 
 
 def run():
