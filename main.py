@@ -2,82 +2,11 @@ import sys
 import inspect
 import pyautogui
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
-
-
-class Weapon:
-    """Weapon"""
-
-    def __init__(self, manufacture: str, serial_number: str, weapon_type: str):
-        self.weapon_type = weapon_type
-        self.serial_number = serial_number
-        self.manufacture = manufacture
-
-        self._killable = True
-
-    def base_description(self):
-        return f'{self.weapon_type} {self.manufacture} with S/N: {self.serial_number}'
-
-    def __str__(self):
-        return f'{self.weapon_type} {self.manufacture}'
-
-
-class FireArms(Weapon):
-    """Firearms"""
-
-    def __init__(self, manufacture: str, serial_number: str, model: str, weapon_type: str, cal: str, type_of_sight: str,
-                 series=''):
-        self.model = model
-        self.type_of_sight = type_of_sight
-        self.cal = cal
-        self.series = series
-
-        Weapon.__init__(self, manufacture, serial_number, weapon_type)
-
-    def description(self):
-        return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
-
-
-class ColdBladedWeapon(Weapon):
-    """Cold Bladed Weapon"""
-
-    def __init__(self, manufacture: str, serial_number: str, weapon_type: str, blade_type: str, blade_dimensions: dict):
-        self.blade_dimensions = blade_dimensions
-        self.blade_type = blade_type
-
-        Weapon.__init__(self, manufacture, serial_number, weapon_type)
-
-    def __blade_dimensions_as_string(self):
-        return f"{self.blade_dimensions['blade_length']}x{self.blade_dimensions['blade_height']}"
-
-    def description(self):
-        return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.__blade_dimensions_as_string()}mm dimensions"
-
-    def __str__(self):
-        return f'This {self.weapon_type} is manufactured by {self.manufacture}'
-
-
-class Axe(ColdBladedWeapon):
-    """Axe"""
-
-    def __init__(self, manufacture: str, serial_number: str, weapon_type: str, blade_type: str, blade_dimensions: dict):
-        ColdBladedWeapon.__init__(self, manufacture, serial_number, weapon_type, blade_type, blade_dimensions)
-
-    def description(self):
-        return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.blade_dimensions['blade_length']}mm length"
-
-
-class Sword(ColdBladedWeapon):
-    """Sword"""
-
-    def __init__(self, manufacture: str, serial_number: str, weapon_type: str, blade_type: str, blade_dimensions: dict):
-        ColdBladedWeapon.__init__(self, manufacture, serial_number, weapon_type, blade_type, blade_dimensions)
-
-    def description(self):
-        return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.blade_dimensions['blade_length']}mm length"
+from WeaponFactoryOOP.class_library import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 
 
 def get_classes_dictionary():
-    cls_members = inspect.getmembers(sys.modules[__name__], inspect.isclass)
+    cls_members = [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if member[1].__module__ == "WeaponFactoryOOP.class_library"]
     classes = dict()
 
     for cls in cls_members:
@@ -127,6 +56,8 @@ def create_instance(index: str, class_dict: list, create_menu: dict):
     for arg in args:
         input_data = input(f'Please enter value for {arg}:')
         class_args.append(input_data)
+
+    print(len(class_args))
     object_instance = class_instance(*class_args)
 
     return list_of_weapon_objects.append(object_instance)
@@ -151,7 +82,6 @@ def run():
             print(err.msg)
         except Exception as err:
             print(err)
-    # validate_input(input_data)
 
     while input_data != 'stop':
         if input_data == '1':
