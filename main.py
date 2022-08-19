@@ -149,6 +149,8 @@ def run():
             print(err.msg)
         except ValueHighError as err:
             print(err.msg)
+        except Exception as err:
+            print(err)
     # validate_input(input_data)
 
     while input_data != 'stop':
