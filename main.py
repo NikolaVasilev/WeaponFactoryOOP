@@ -1,7 +1,7 @@
 import sys
 import inspect
-
 import pyautogui
+from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 
 class Weapon:
@@ -140,7 +140,15 @@ def run():
 
     display_main_menu()
 
-    input_data = input("Please make your choice:")
+    while True:
+        try:
+            input_data = input("Please make your choice:")
+            test_input_value(input_data, (1, 3))
+            break
+        except ValueLowError as err:
+            print(err.msg)
+        except ValueHighError as err:
+            print(err.msg)
     # validate_input(input_data)
 
     while input_data != 'stop':
