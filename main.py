@@ -49,7 +49,6 @@ def run():
             input_data = ''
             display_main_menu()
 
-
         if input_data == '2':
             # list of instances and operations with them
             list_instances_menu(list_of_weapon_objects)
