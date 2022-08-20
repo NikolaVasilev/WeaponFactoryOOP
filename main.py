@@ -1,7 +1,8 @@
 import pyautogui
 
+from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
-    get_classes_dictionary, create_instance_by_index, input_command
+    input_command
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 # add input validations
@@ -45,10 +46,10 @@ def run():
 
         if input_data == '3':
             input_data = 'stop'
-            print('Have a nice day! Bye! PEW PEW PEW ')
+            print('Have a nice day! Bye! PEW PEW PEW')
             return input_data
 
-        input_data = input("Please make your choice:")
+        input_data = input_command((1, 3))
 
 
 if __name__ == '__main__':
