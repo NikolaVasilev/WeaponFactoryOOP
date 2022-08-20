@@ -15,6 +15,7 @@ def run():
     display_main_menu()
     seed(list_of_weapon_objects, class_dict)
 
+    # this should be exported in other method for input validation and should be reusable
     while True:
         try:
             input_data = input("Please make your choice:")
@@ -26,6 +27,8 @@ def run():
             print(err.msg)
         except Exception as err:
             print(err)
+
+    # =====================================================================================
 
     while input_data != 'stop':
         if input_data == '1':
