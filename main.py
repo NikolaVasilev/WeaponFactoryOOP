@@ -5,8 +5,6 @@ from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_creat
     input_command
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
-# add input validations
-
 list_of_weapon_objects = []
 
 
