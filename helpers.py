@@ -18,8 +18,11 @@ def seed(list_of_weapon_objects):
         for weapon_class in data:
             class_name, weapon_objects = list(weapon_class.items())[0]
             instance_weapon_class = [weapon_class for weapon_class in class_dict if weapon_class[0] == class_name][0][1]
+
             for weapon_object in weapon_objects:
-                instance_object = create_instance(instance_weapon_class, weapon_object.values())
+                dto = weapon_object
+
+                instance_object = create_instance(instance_weapon_class, dto)
                 list_of_weapon_objects.append(instance_object)
 
         file.close()
@@ -40,7 +43,7 @@ def get_classes_dictionary():
 
 
 def create_instance(class_instance, class_args):
-    return class_instance(*class_args)
+    return class_instance(**class_args)
 
 
 def create_instance_by_index(index: str, class_dict: list, create_menu: dict, list_of_weapon_objects: list):
@@ -58,7 +61,7 @@ def create_instance_by_index(index: str, class_dict: list, create_menu: dict, li
 
     return list_of_weapon_objects.append(object_instance)
 
-
+# unfinished
 def display_text_create_menu(class_dict: dict):
     print("You are able to create instance of weapon object. You can chose between:")
     text_options = ''
