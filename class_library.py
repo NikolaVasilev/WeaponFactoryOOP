@@ -30,6 +30,10 @@ class FireArms(Weapon):
     def description(self):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
 
+    def _make_some_noise(self):
+        print('PEW PEW PEW PEW')
+        return self
+
 
 class ColdBladedWeapon(Weapon):
     """Cold Bladed Weapon"""
@@ -46,6 +50,10 @@ class ColdBladedWeapon(Weapon):
     def description(self):
         return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.__blade_dimensions_as_string()}mm dimensions"
 
+    def _make_some_noise(self):
+        print('KLUC KLUC KLUC KLUC......')
+        return self
+
     def __str__(self):
         return f'This {self.weapon_type} is manufactured by {self.manufacture}'
 
@@ -59,6 +67,10 @@ class Axe(ColdBladedWeapon):
     def description(self):
         return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.blade_dimensions['blade_length']}mm length"
 
+    def _make_some_noise(self):
+        print('TUP HRUC KLUC TUP......')
+        return self
+
 
 class Sword(ColdBladedWeapon):
     """Sword"""
@@ -68,4 +80,3 @@ class Sword(ColdBladedWeapon):
 
     def description(self):
         return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.blade_dimensions['blade_length']}mm length"
-
