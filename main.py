@@ -1,7 +1,7 @@
 import pyautogui
 
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
-    get_classes_dictionary, create_instance_by_index
+    get_classes_dictionary, create_instance_by_index, input_command
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 # add input validations
@@ -15,20 +15,7 @@ def run():
     display_main_menu()
     seed(list_of_weapon_objects, class_dict)
 
-    # this should be exported in other method for input validation and should be reusable
-    while True:
-        try:
-            input_data = input("Please make your choice:")
-            test_input_value(input_data, (1, 3))
-            break
-        except ValueLowError as err:
-            print(err.msg)
-        except ValueHighError as err:
-            print(err.msg)
-        except Exception as err:
-            print(err)
-
-    # =====================================================================================
+    input_data = input_command((1, 3))
 
     while input_data != 'stop':
         if input_data == '1':
@@ -38,7 +25,7 @@ def run():
 
             exit_option = display_text_create_menu(create_menu)
 
-            input_data = input("Please make your choice:")
+            input_data = input_command((1, exit_option))
 
             if input_data == str(exit_option):
                 pyautogui.hotkey('ctrl', ';')

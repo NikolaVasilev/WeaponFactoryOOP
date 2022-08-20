@@ -5,6 +5,7 @@ import sys
 import pyautogui
 
 from WeaponFactoryOOP.class_library import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
+from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 
 # class create instance
@@ -27,6 +28,21 @@ def seed(list_of_weapon_objects, class_dict):
     return list_of_weapon_objects
 
 
+def input_command(desired_range):
+    while True:
+        try:
+            input_data = input("Please make your choice:")
+            test_input_value(input_data, desired_range)
+            return input_data
+        except ValueLowError as err:
+            print(err.msg)
+        except ValueHighError as err:
+            print(err.msg)
+        except Exception as err:
+            print(err)
+
+
+# this should be moved from here
 def get_classes_dictionary():
     cls_members = [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
                    member[1].__module__ == "WeaponFactoryOOP.class_library"]
@@ -40,10 +56,12 @@ def get_classes_dictionary():
     return classes, cls_members
 
 
+# this should be moved from here
 def create_instance(class_instance, class_args):
     return class_instance(**class_args)
 
 
+# this should be moved from here
 def create_instance_by_index(index: str, class_dict: list, create_menu: dict, list_of_weapon_objects: list):
     class_instance = class_dict[int(index) - 1][1]
 
