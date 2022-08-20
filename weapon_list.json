@@ -1,0 +1,96 @@
+[
+  {
+    "Sword": [
+      {
+        "manufacture": "British East Corp",
+        "serial_number": "577765468",
+        "weapon_type": "Two handed medieval long sword",
+        "blade_type": "two sided",
+        "blade_dimensions": {
+          "blade_length": 1330
+        }
+      }
+    ]
+  },
+  {
+    "Axe": [
+      {
+        "manufacture": "Viking Blades",
+        "serial_number": "57768",
+        "weapon_type": "Viking Battle Axe",
+        "blade_type": "one sided",
+        "blade_dimensions": {
+          "blade_length": 330
+        }
+      }
+    ]
+  },
+  {
+    "ColdBladedWeapon": [
+      {
+        "manufacture": "Muela",
+        "serial_number": "5778654/A668",
+        "weapon_type": "Battle knife",
+        "blade_type": "one sided",
+        "blade_dimensions": {
+          "blade_length": 230,
+          "blade_height": 30
+        }
+      }
+    ]
+  },
+  {
+    "FireArms": [
+      {
+        "manufacture": "CZ",
+        "serial_number": "5765fhh5A668",
+        "weapon_type": "Gun",
+        "model": "SP-01 SHADOW",
+        "cal": "9x19",
+        "type_of_sight": "fiber optic",
+        "series": "75"
+      },
+      {
+        "manufacture": "Beretta",
+        "serial_number": "5fhh5A5468",
+        "weapon_type": "Gun",
+        "model": "G",
+        "cal": "9x19",
+        "type_of_sight": "fiber optic",
+        "series": "92"
+      },
+      {
+        "manufacture": "M60",
+        "serial_number": "5fhh5890A5468",
+        "weapon_type": "Machine Gun",
+        "model": "E4",
+        "cal": "7.62x51",
+        "type_of_sight": "iron sight",
+        "series": ""
+      },
+      {
+        "manufacture": "Kalashnikov Concern Norinco",
+        "serial_number": "590A5468",
+        "weapon_type": "Sniper rifle",
+        "model": "SVD",
+        "cal": "7.62x54",
+        "type_of_sight": "optic",
+        "series": "63"
+      }
+    ]
+  },
+  {
+    "Weapon": [
+      {
+        "manufacture": "Makarov",
+        "serial_number": "5775/A668",
+        "weapon_type": "Gun"
+      },
+      {
+        "manufacture": "TT",
+        "serial_number": "5775fhh5A668",
+        "weapon_type": "Gun"
+      }
+    ]
+  }
+]
