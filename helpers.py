@@ -17,7 +17,7 @@ def seed(list_of_weapon_objects):
             class_name, weapon_objects = list(weapon_class.items())[0]
             instance_weapon_class = [weapon_class for weapon_class in class_dict if weapon_class[0] == class_name][0][1]
             for weapon_object in weapon_objects:
-                instance_object = instance_weapon_class(*weapon_object.values())
+                instance_object = create_instance(instance_weapon_class, weapon_object.values())
                 list_of_weapon_objects.append(instance_object)
 
     return list_of_weapon_objects
@@ -36,6 +36,10 @@ def get_classes_dictionary():
     return classes, cls_members
 
 
+def create_instance(class_instance, class_args):
+    return class_instance(*class_args)
+
+
 def create_instance_by_index(index: str, class_dict: list, create_menu: dict, list_of_weapon_objects: list):
     class_instance = class_dict[int(index) - 1][1]
 
@@ -47,7 +51,7 @@ def create_instance_by_index(index: str, class_dict: list, create_menu: dict, li
         input_data = input(f'Please enter value for {arg}:')
         class_args.append(input_data)
 
-    object_instance = class_instance(*class_args)
+    object_instance = create_instance(class_instance, class_args)
 
     return list_of_weapon_objects.append(object_instance)
 
