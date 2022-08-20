@@ -20,6 +20,7 @@ def seed(list_of_weapon_objects):
                 instance_object = create_instance(instance_weapon_class, weapon_object.values())
                 list_of_weapon_objects.append(instance_object)
 
+        file.close()
     return list_of_weapon_objects
 
 
