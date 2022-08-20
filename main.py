@@ -1,5 +1,3 @@
-import sys
-import inspect
 import pyautogui
 
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
