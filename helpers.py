@@ -7,6 +7,8 @@ import pyautogui
 from WeaponFactoryOOP.class_library import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 
 
+# class create instance
+
 def seed(list_of_weapon_objects):
     create_menu, class_dict = get_classes_dictionary()
 
@@ -69,6 +71,7 @@ def display_text_create_menu(class_dict: dict):
 
 def display_main_menu():
     return print('You are able to:\n1 - Create a new instance\n2 - To list all instances\n3 - Exit ')
+
 
 # UNFINISHED
 def list_instances_menu(list_of_weapon_objects):
