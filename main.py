@@ -45,7 +45,7 @@ def run():
 
         if input_data == '3':
             input_data = 'stop'
-            print('Have a nice day! Bye!')
+            print('Have a nice day! Bye! PEW PEW PEW ')
             return input_data
 
         input_data = input("Please make your choice:")
