@@ -9,9 +9,7 @@ from WeaponFactoryOOP.class_library import Weapon, FireArms, ColdBladedWeapon, A
 
 # class create instance
 
-def seed(list_of_weapon_objects):
-    create_menu, class_dict = get_classes_dictionary()
-
+def seed(list_of_weapon_objects, class_dict):
     with open('WeaponFactoryOOP/weapon_list.json') as file:
         data = json.load(file)
 
@@ -50,26 +48,30 @@ def create_instance_by_index(index: str, class_dict: list, create_menu: dict, li
     class_instance = class_dict[int(index) - 1][1]
 
     args = list(create_menu.values())[int(index) - 1]
-    class_args = []
     pyautogui.hotkey('ctrl', ';')
+
+    weapon_dto = {}
 
     for arg in args:
         input_data = input(f'Please enter value for {arg}:')
-        class_args.append(input_data)
+        weapon_dto[arg] = input_data
 
-    object_instance = create_instance(class_instance, class_args)
+    object_instance = create_instance(class_instance, weapon_dto)
 
     return list_of_weapon_objects.append(object_instance)
+
 
 # unfinished
 def display_text_create_menu(class_dict: dict):
     print("You are able to create instance of weapon object. You can chose between:")
     text_options = ''
+    exit_option = len(class_dict) + 1
     for index, key in enumerate(class_dict):
         text_options += f'{index + 1} - {key}\n'
-    text_options += f'{len(class_dict) + 1} - Exit'
+    text_options += f'{exit_option} - Exit'
+    print(text_options)
 
-    return print(text_options)
+    return exit_option
 
 
 def display_main_menu():
@@ -85,6 +87,12 @@ def list_instances_menu(list_of_weapon_objects):
     for index, instance in enumerate(list_of_weapon_objects):
         print(f"{index + 1} - {instance}")
     exit_option = len(list_of_weapon_objects) + 1
-    print(f"{exit_option} - Return to previous menu")
-    input_data = input()
+    print(f"{exit_option} - Return to previous menu\n")
+    input_data = input('Please make your choice:')
+
+    if int(input_data) == exit_option:
+        pyautogui.hotkey('ctrl', ';')
+        return display_main_menu()
+
+    # call function detailed view by instance of weapon
     return

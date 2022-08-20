@@ -13,7 +13,7 @@ def run():
     create_menu, class_dict = get_classes_dictionary()
 
     display_main_menu()
-    seed(list_of_weapon_objects)
+    seed(list_of_weapon_objects, class_dict)
 
     while True:
         try:
@@ -33,8 +33,14 @@ def run():
             # 'clear all' option in preferences, otherwise you have use oc.system() method
             pyautogui.hotkey('ctrl', ';')
 
-            display_text_create_menu(create_menu)
+            exit_option = display_text_create_menu(create_menu)
+
             input_data = input("Please make your choice:")
+
+            if input_data == str(exit_option):
+                pyautogui.hotkey('ctrl', ';')
+                display_main_menu()
+                continue
 
             # create instance and return to main menu
             create_instance_by_index(input_data, class_dict, create_menu, list_of_weapon_objects)
@@ -42,6 +48,7 @@ def run():
             pyautogui.hotkey('ctrl', ';')
             input_data = ''
             display_main_menu()
+
 
         if input_data == '2':
             # list of instances and operations with them
