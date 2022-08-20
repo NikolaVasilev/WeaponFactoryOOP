@@ -6,7 +6,6 @@ from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueH
 
 # add input validations
 
-
 list_of_weapon_objects = []
 
 
@@ -50,6 +49,7 @@ def run():
 
         if input_data == '3':
             input_data = 'stop'
+            print('Have a nice day! Bye!')
             return input_data
 
         input_data = input("Please make your choice:")

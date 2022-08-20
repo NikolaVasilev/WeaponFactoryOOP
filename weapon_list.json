@@ -44,8 +44,8 @@
       {
         "manufacture": "CZ",
         "serial_number": "5765fhh5A668",
-        "weapon_type": "Gun",
         "model": "SP-01 SHADOW",
+        "weapon_type": "Gun",
         "cal": "9x19",
         "type_of_sight": "fiber optic",
         "series": "75"
@@ -53,8 +53,8 @@
       {
         "manufacture": "Beretta",
         "serial_number": "5fhh5A5468",
-        "weapon_type": "Gun",
         "model": "G",
+        "weapon_type": "Gun",
         "cal": "9x19",
         "type_of_sight": "fiber optic",
         "series": "92"
@@ -62,8 +62,8 @@
       {
         "manufacture": "M60",
         "serial_number": "5fhh5890A5468",
-        "weapon_type": "Machine Gun",
         "model": "E4",
+        "weapon_type": "Machine Gun",
         "cal": "7.62x51",
         "type_of_sight": "iron sight",
         "series": ""
