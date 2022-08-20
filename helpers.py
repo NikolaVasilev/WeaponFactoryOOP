@@ -70,10 +70,10 @@ def display_text_create_menu(class_dict: dict):
 def display_main_menu():
     return print('You are able to:\n1 - Create a new instance\n2 - To list all instances\n3 - Exit ')
 
-
+# UNFINISHED
 def list_instances_menu(list_of_weapon_objects):
     pyautogui.hotkey('ctrl', ';')
-    # available operations
+    # should implement available operations
     print('These are available weapons. You are able to see detailed info by them, choosing the number in front of '
           'them:\n')
     for index, instance in enumerate(list_of_weapon_objects):
