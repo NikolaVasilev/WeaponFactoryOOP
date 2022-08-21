@@ -24,6 +24,9 @@ class FireArms(Weapon):
         self.type_of_sight = type_of_sight
         self.cal = cal
         self.series = series
+        # TODO setter method and remove method also add implementation of injector class for attachments(suppressors,
+        #  muzzles and others. Should be implemented and relative classes )
+        _list_of_attachments = []
 
         Weapon.__init__(self, manufacture, serial_number, weapon_type)
 
@@ -68,7 +71,7 @@ class Axe(ColdBladedWeapon):
         return f"This {self.weapon_type} is manufactured by {self.manufacture} with S/N: {self.serial_number}. It has {self.blade_type} blade with {self.blade_dimensions['blade_length']}mm length"
 
     def _make_some_noise(self):
-        print('TUP HRUC KLUC TUP......')
+        print('TUP HRUC KLUC TUP.....Your head is rolling.:D')
         return self
 
 

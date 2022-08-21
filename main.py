@@ -3,7 +3,6 @@ import pyautogui
 from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
     input_command
-from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 list_of_weapon_objects = []
 
