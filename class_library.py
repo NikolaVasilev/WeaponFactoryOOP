@@ -24,7 +24,7 @@ class FireArms(Weapon):
         self.type_of_sight = type_of_sight
         self.cal = cal
         self.series = series
-        # TODO setter method and remove method also add implementation of injector class for attachments(suppressors,
+        # TODO add and remove methods, also have to add implementation of injector class for attachments(suppressors,
         #  muzzles and others. Should be implemented and relative classes )
         _list_of_attachments = []
 
