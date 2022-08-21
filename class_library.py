@@ -25,7 +25,7 @@ class FireArms(Weapon):
         self.cal = cal
         self.series = series
         # TODO add and remove methods, also have to add implementation of injector class for attachments(suppressors,
-        #  muzzles and others. Should be implemented and relative classes )
+        #  muzzles and others. Should be implemented and relative classes - but not today.... it`s a fucking Sunday)
         _list_of_attachments = []
 
         Weapon.__init__(self, manufacture, serial_number, weapon_type)
