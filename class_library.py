@@ -24,7 +24,7 @@ class FireArms(Weapon):
         self.type_of_sight = type_of_sight
         self.cal = cal
         self.series = series
-        # TODO add and remove methods, also have to add implementation of injector class for attachments(suppressors,
+        # TODO add and remove methods, I also have to add implementation of injector class for attachments(suppressors,
         #  muzzles and others. Should be implemented also relative classes - but not today.... it`s a fucking Sunday)
         _list_of_attachments = []
 
@@ -34,7 +34,7 @@ class FireArms(Weapon):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
 
     def _make_some_noise(self):
-        print('PEW PEW PEW PEW')
+        print('PEW PEW PEW PEW') # if 'suppressor' not in _list_of_attachments else print('sup sup sup .... :D')
         return self
 
 
