@@ -5,6 +5,7 @@ import pyautogui
 from WeaponFactoryOOP.core import create_instance
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
+
 def seed(list_of_weapon_objects, class_dict):
     with open('WeaponFactoryOOP/weapon_list.json') as file:
         data = json.load(file)
