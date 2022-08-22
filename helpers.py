@@ -2,12 +2,8 @@ import json
 
 import pyautogui
 
-from WeaponFactoryOOP.class_library import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 from WeaponFactoryOOP.core import create_instance
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
-
-
-# class create instance
 
 def seed(list_of_weapon_objects, class_dict):
     with open('WeaponFactoryOOP/weapon_list.json') as file:
