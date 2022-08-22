@@ -6,8 +6,8 @@ from WeaponFactoryOOP.core import create_instance
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 
-def seed(list_of_objects, class_dict, type_of_objects):
-    with open(f'WeaponFactoryOOP/{type_of_objects}_list.json') as file:
+def seed(list_of_objects, class_dict, file_name):
+    with open(f'WeaponFactoryOOP/{file_name}') as file:
         data = json.load(file)
 
         for object_class in data:

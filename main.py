@@ -7,13 +7,18 @@ from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_creat
 list_of_weapon_objects = []
 list_of_attachment_objects = []
 
+weapons_library = 'class_library_weapons'
+attachments_library = 'class_library_attachments'
+weapons_json_file = 'weapons_list.json'
+attachments_json_file = 'attachments_list.json'
+
 
 def run():
-    create_menu_weapons, class_dict_weapons = get_classes_dictionary('class_library_weapons')
-    create_menu_attachments, class_dict_attachments = get_classes_dictionary('class_library_attachment')
+    create_menu_weapons, class_dict_weapons = get_classes_dictionary(weapons_library)
+    create_menu_attachments, class_dict_attachments = get_classes_dictionary(attachments_library)
 
-    seed(list_of_weapon_objects, class_dict_weapons, 'weapon')
-    seed(list_of_attachment_objects, class_dict_attachments, 'attachments')
+    seed(list_of_weapon_objects, class_dict_weapons, weapons_json_file)
+    seed(list_of_attachment_objects, class_dict_attachments, attachments_json_file)
 
     display_main_menu()
 

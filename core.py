@@ -3,7 +3,7 @@ import sys
 
 import pyautogui
 from WeaponFactoryOOP.class_library_weapons import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
-from WeaponFactoryOOP.class_library_attachment import Suppressor, Muzzle
+from WeaponFactoryOOP.class_library_attachments import Suppressor, Muzzle
 
 
 def get_cls_members(class_library_module):
@@ -12,10 +12,7 @@ def get_cls_members(class_library_module):
 
 
 def get_classes_dictionary(class_library):
-    if class_library == 'class_library_weapons':
-        cls_members = get_cls_members('WeaponFactoryOOP.class_library_weapons')
-    else:
-        cls_members = get_cls_members('WeaponFactoryOOP.class_library_attachment')
+    cls_members = get_cls_members(f'WeaponFactoryOOP.{class_library}')
 
     classes = dict()
 
@@ -44,10 +41,10 @@ def create_instance_by_index(index: str, class_dict: list, create_menu: dict, li
         weapon_dto[arg] = input_data
 
     if hasattr(class_instance, '_list_of_attachments'):
-        # menu should ask to inject instance which already exist or create new attachment and inject. In option two I
-        # will be able to use injector class just for example and I have to add created instances into the list.
-        # is_mounted variable should be set it to true. When user unmount attachment, it has to be moved into
-        # attribute list and is_mounted should be set it up to false
+        # menu should ask user, to inject instance which already exist or has to create new attachment and inject. In
+        # option two I will be able to use injector class just for example and I have to add created instances into
+        # the list. is_mounted variable should be set it to true. When user unmount attachment, it has to be moved
+        # into attribute list and is_mounted should be set it up to false
         pass
 
     object_instance = create_instance(class_instance, weapon_dto)
