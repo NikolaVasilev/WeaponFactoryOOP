@@ -18,17 +18,17 @@ class Weapon:
 class FireArms(Weapon):
     """Firearms"""
 
-    def __init__(self, manufacture: str, serial_number: str, model: str, weapon_type: str, cal: str, type_of_sight: str,
-                 series=''):
+    def __init__(self, manufacture: str, serial_number: str, model: str, weapon_type: str, cal: str, type_of_sight: str, series=''):
         self.model = model
         self.type_of_sight = type_of_sight
         self.cal = cal
         self.series = series
         # TODO add and remove methods, I also have to add implementation of injector class for attachments(suppressors,
         #  muzzles and others.)
-        _list_of_attachments = []
 
         Weapon.__init__(self, manufacture, serial_number, weapon_type)
+
+    _list_of_attachments = []
 
     def description(self):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '

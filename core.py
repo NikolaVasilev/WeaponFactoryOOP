@@ -44,9 +44,10 @@ def create_instance_by_index(index: str, class_dict: list, create_menu: dict, li
         weapon_dto[arg] = input_data
 
     if hasattr(class_instance, '_list_of_attachments'):
-        # ask to inject instance which already exist or create new attachment and inject in option two I will be able
-        # to use injector class just for example and I have to add created instances into the list. is_mounted
-        # variable should be set it to true. This will prevent the same object being added to another weapon
+        # menu should ask to inject instance which already exist or create new attachment and inject. In option two I
+        # will be able to use injector class just for example and I have to add created instances into the list.
+        # is_mounted variable should be set it to true. When user unmount attachment, it has to be moved into
+        # attribute list and is_mounted should be set it up to false
         pass
 
     object_instance = create_instance(class_instance, weapon_dto)
