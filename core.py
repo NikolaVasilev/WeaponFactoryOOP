@@ -3,11 +3,20 @@ import sys
 
 import pyautogui
 from WeaponFactoryOOP.class_library import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
+from WeaponFactoryOOP.class_library_attachment import Suppressor, Muzzle
 
 
-def get_classes_dictionary():
-    cls_members = [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
-                   member[1].__module__ == "WeaponFactoryOOP.class_library"]
+def get_cls_members(class_library_module):
+    return [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
+            member[1].__module__ == class_library_module]
+
+
+def get_classes_dictionary(class_library):
+    if class_library == 'class_library_weapons':
+        cls_members = get_cls_members('WeaponFactoryOOP.class_library')
+    else:
+        cls_members = get_cls_members('WeaponFactoryOOP.class_library_attachment')
+
     classes = dict()
 
     for cls in cls_members:

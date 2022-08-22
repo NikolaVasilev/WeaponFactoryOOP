@@ -23,7 +23,7 @@ class Base(ABC):
 
 
 class Attachment(Base):
-    def __init__(self, type, model, weight, length, outer_diameter: float, inner_diameter: float, cal):
+    def __init__(self, type, model, weight, length, outer_diameter, inner_diameter, cal):
         super().__init__(type, model, weight, length, outer_diameter, inner_diameter, cal)
 
     def _base_description(self):

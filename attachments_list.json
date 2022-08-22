@@ -1,0 +1,26 @@
+[
+  {
+    "Suppressor": [
+      {
+        "model": "SomeModel",
+        "weight": 5,
+        "length": 70,
+        "outer_diameter": 20,
+        "inner_diameter": 9,
+        "cal": "9x19"
+      }
+    ]
+  },
+  {
+    "Muzzle": [
+      {
+        "model": "SomeModel",
+        "weight": 5,
+        "length": 70,
+        "outer_diameter": 20,
+        "inner_diameter": 9,
+        "cal": "9x19"
+      }
+    ]
+  }
+]

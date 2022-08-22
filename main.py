@@ -5,13 +5,17 @@ from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_creat
     input_command
 
 list_of_weapon_objects = []
+list_of_attachment_objects = []
 
 
 def run():
-    create_menu, class_dict = get_classes_dictionary()
+    create_menu_weapons, class_dict_weapons = get_classes_dictionary('class_library_weapons')
+    create_menu_attachments, class_dict_attachments = get_classes_dictionary('class_library_attachment')
+
+    seed(list_of_weapon_objects, class_dict_weapons, 'weapon')
+    seed(list_of_attachment_objects, class_dict_attachments, 'attachments')
 
     display_main_menu()
-    seed(list_of_weapon_objects, class_dict)
 
     input_data = input_command((1, 3))
 
@@ -21,7 +25,7 @@ def run():
             # 'clear all' option in preferences, otherwise you have use oc.system() method
             pyautogui.hotkey('ctrl', ';')
 
-            exit_option = display_text_create_menu(create_menu)
+            exit_option = display_text_create_menu(create_menu_weapons)
 
             input_data = input_command((1, exit_option))
 
@@ -31,7 +35,7 @@ def run():
                 continue
 
             # create instance and return to main menu
-            create_instance_by_index(input_data, class_dict, create_menu, list_of_weapon_objects)
+            create_instance_by_index(input_data, class_dict_weapons, create_menu_weapons, list_of_weapon_objects)
 
             pyautogui.hotkey('ctrl', ';')
             input_data = ''

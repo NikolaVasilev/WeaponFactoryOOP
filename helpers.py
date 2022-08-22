@@ -6,22 +6,22 @@ from WeaponFactoryOOP.core import create_instance
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 
-def seed(list_of_weapon_objects, class_dict):
-    with open('WeaponFactoryOOP/weapon_list.json') as file:
+def seed(list_of_objects, class_dict, type_of_objects):
+    with open(f'WeaponFactoryOOP/{type_of_objects}_list.json') as file:
         data = json.load(file)
 
-        for weapon_class in data:
-            class_name, weapon_objects = list(weapon_class.items())[0]
+        for object_class in data:
+            class_name, objects = list(object_class.items())[0]
             instance_weapon_class = [weapon_class for weapon_class in class_dict if weapon_class[0] == class_name][0][1]
 
-            for weapon_object in weapon_objects:
-                dto = weapon_object
+            for object in objects:
+                dto = object
 
                 instance_object = create_instance(instance_weapon_class, dto)
-                list_of_weapon_objects.append(instance_object)
+                list_of_objects.append(instance_object)
 
         file.close()
-    return list_of_weapon_objects
+    return list_of_objects
 
 
 def input_command(desired_range):
