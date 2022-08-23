@@ -26,11 +26,16 @@ class Attachment(Base):
     def __init__(self, type, model, weight, length, outer_diameter, inner_diameter, cal):
         super().__init__(type, model, weight, length, outer_diameter, inner_diameter, cal)
 
+    _weapon = ''
+
     def _base_description(self):
         return ''
 
     def _is_mounted_as_string(self):
-        return f'The {self._type} {self._model} is mounted' if self._is_mounted else f'The {self._type} {self._model} is not mounted'
+        text = f'The {self._type} {self._model} is mounted' if self._is_mounted else f'The {self._type} {self._model} is not mounted '
+        if self._weapon:
+            text = f'{text} on {self._weapon}'
+        return text
 
 
 class Suppressor(Attachment):

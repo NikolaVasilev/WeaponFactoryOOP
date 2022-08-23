@@ -1,6 +1,6 @@
 import pyautogui
 
-from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index
+from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index, Injector
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
     input_command
 
@@ -19,6 +19,32 @@ def run():
 
     seed(list_of_weapon_objects, class_dict_weapons, weapons_json_file)
     seed(list_of_attachment_objects, class_dict_attachments, attachments_json_file)
+
+    # Temporary Test of functionality =========================================
+
+    weapon_args = {
+        "manufacture": "CZ",
+        "serial_number": "5765fhh5A668",
+        "model": "SP-01 SHADOW",
+        "weapon_type": "Gun",
+        "cal": "9x19",
+        "type_of_sight": "fiber optic",
+        "series": "75"
+    }
+
+    suppressor_args = {
+        "model": "SomeModel",
+        "weight": 5,
+        "length": 70,
+        "outer_diameter": 20,
+        "inner_diameter": 9,
+        "cal": "9x19"
+    }
+
+    weapon = Injector(class_dict_weapons[2][1], weapon_args, class_dict_attachments[1][1], suppressor_args).init_and_inject_weapon_attachment()
+    print(weapon._list_of_attachments[0]._is_mounted_as_string())
+
+    # ================================================================================
 
     display_main_menu()
 

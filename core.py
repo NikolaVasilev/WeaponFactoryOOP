@@ -5,19 +5,44 @@ import pyautogui
 from WeaponFactoryOOP.class_library_weapons import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 from WeaponFactoryOOP.class_library_attachments import Suppressor, Muzzle
 
-# Test =========================================
-pistol = FireArms(manufacture='CZ', serial_number='45464', model='SP-01 Shadow', weapon_type='Gun',cal='9x19', type_of_sight='fiber optic', series='75')
-sup = Suppressor('some model', 5,5,5,5, '9x19')
 
-pistol._make_some_noise()
+# this will be useful if we save instances in json or db and load it from there
+# should be moved to appropriate modul
+class Injector:
+    def __init__(self, weapon: type, weapon_args: dict, attribute: type, attribute_args):
+        self.attribute_args = attribute_args
+        self.attribute = attribute
+        self.weapon_args = weapon_args
+        self.weapon = weapon
 
-pistol._list_of_attachments.append(sup)
+    def init_and_inject_weapon_attachment(self):
+        new_weapon = self.weapon(**self.weapon_args)
+        new_attribute = self.attribute(**self.attribute_args)
+        new_attribute._is_mounted = True
+        new_attribute._weapon = f'{new_weapon.weapon_type} "{new_weapon.manufacture}{new_weapon.series} - {new_weapon.model}'
+        new_weapon._list_of_attachments.append(new_attribute)
+        return new_weapon
 
-pistol._make_some_noise()
 
-pistol._list_of_attachments[0]._is_mounted = True
+# Temporary Test of functionality =========================================
 
-print(pistol._list_of_attachments[0]._is_mounted_as_string())
+gun = FireArms(manufacture='CZ', serial_number='45464', model='SP-01 Shadow', weapon_type='Gun', cal='9x19',
+                  type_of_sight='fiber optic', series='75')
+sup = Suppressor('some model', 5, 5, 5, 5, '9x19')
+
+gun._make_some_noise()
+
+gun._list_of_attachments.append(sup)
+
+gun._list_of_attachments[0]._is_mounted = True
+
+gun._list_of_attachments[0]._weapon = 'CZ75 SP-01 Shadow'
+
+gun._make_some_noise()
+
+print(gun._list_of_attachments[0]._is_mounted_as_string())
+
+
 # ================================================
 def get_cls_members(class_library_module):
     return [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
@@ -54,7 +79,7 @@ def create_instance_by_index(index: str, class_dict: list, create_menu: dict, li
         weapon_dto[arg] = input_data
 
     if hasattr(class_instance, '_list_of_attachments'):
-        # menu should ask user, to inject instance which already exist or has to create new attachment and inject. In
+        # menu should ask user, to inject instance which already exist or has to create new attachment and inject it. In
         # option two I will be able to use injector class just for example and I have to add created instances into
         # the list. is_mounted variable should be set it to true. When user unmount attachment, it has to be moved
         # into attribute list and is_mounted should be set it up to false

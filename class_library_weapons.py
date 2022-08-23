@@ -29,7 +29,7 @@ class FireArms(Weapon):
         Weapon.__init__(self, manufacture, serial_number, weapon_type)
 
     _list_of_attachments = []
-
+    
     def description(self):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
 
