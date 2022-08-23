@@ -7,10 +7,10 @@ from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_creat
 list_of_weapon_objects = []
 list_of_attachment_objects = []
 
-weapons_library = 'class_library_weapons'
-attachments_library = 'class_library_attachments'
-weapons_json_file = 'weapons_list.json'
-attachments_json_file = 'attachments_list.json'
+weapons_library: str = 'class_library_weapons'
+attachments_library: str = 'class_library_attachments'
+weapons_json_file: str = 'weapons_list.json'
+attachments_json_file: str = 'attachments_list.json'
 
 
 def run():

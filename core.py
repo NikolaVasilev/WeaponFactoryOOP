@@ -5,7 +5,20 @@ import pyautogui
 from WeaponFactoryOOP.class_library_weapons import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 from WeaponFactoryOOP.class_library_attachments import Suppressor, Muzzle
 
+# Test =========================================
+pistol = FireArms(manufacture='CZ', serial_number='45464', model='SP-01 Shadow', weapon_type='Gun',cal='9x19', type_of_sight='fiber optic', series='75')
+sup = Suppressor('some model', 5,5,5,5, '9x19')
 
+pistol._make_some_noise()
+
+pistol._list_of_attachments.append(sup)
+
+pistol._make_some_noise()
+
+pistol._list_of_attachments[0]._is_mounted = True
+
+print(pistol._list_of_attachments[0]._is_mounted_as_string())
+# ================================================
 def get_cls_members(class_library_module):
     return [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
             member[1].__module__ == class_library_module]
