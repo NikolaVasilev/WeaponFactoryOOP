@@ -1,12 +1,24 @@
-class Weapon:
-    """Weapon"""
+from abc import ABC, abstractmethod
 
+
+class Base(ABC):
     def __init__(self, manufacture: str, serial_number: str, weapon_type: str):
         self.weapon_type = weapon_type
         self.serial_number = serial_number
         self.manufacture = manufacture
 
         self._killable = True
+
+    @abstractmethod
+    def base_description(self):
+        pass
+
+
+class Weapon(Base):
+    """Weapon"""
+
+    def __init__(self, manufacture: str, serial_number: str, weapon_type: str):
+        Base.__init__(self, manufacture, serial_number, weapon_type)
 
     def base_description(self):
         return f'{self.weapon_type} {self.manufacture} with S/N: {self.serial_number}'
