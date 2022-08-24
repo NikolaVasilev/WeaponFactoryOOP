@@ -1,8 +1,10 @@
 from abc import ABC, abstractmethod
 
+from WeaponFactoryOOP.enums import SlotTypes
+
 
 class Base(ABC):
-    def __init__(self, type: str, model: str, weight: float, length: float, outer_diameter: float,
+    def __init__(self, type: str, model: str, slot_type: int, weight: float, length: float, outer_diameter: float,
                  inner_diameter: float, cal: str):
         self._type = type
         self._model = model
@@ -11,6 +13,7 @@ class Base(ABC):
         self._outer_diameter = outer_diameter
         self._inner_diameter = inner_diameter
         self._cal = cal
+        self._slot_type = SlotTypes(slot_type)
         self._is_mounted = False
 
     @abstractmethod
@@ -23,8 +26,8 @@ class Base(ABC):
 
 
 class Attachment(Base):
-    def __init__(self, type, model, weight, length, outer_diameter, inner_diameter, cal):
-        super().__init__(type, model, weight, length, outer_diameter, inner_diameter, cal)
+    def __init__(self, type, model, slot_type, weight, length, outer_diameter, inner_diameter, cal):
+        super().__init__(type, model, slot_type, weight, length, outer_diameter, inner_diameter, cal)
 
     _weapon = ''
 
@@ -41,12 +44,12 @@ class Attachment(Base):
 class Suppressor(Attachment):
     """Suppressor"""
 
-    def __init__(self, model, weight, length, outer_diameter, inner_diameter, cal):
-        super().__init__(self.__doc__, model, weight, length, outer_diameter, inner_diameter, cal)
+    def __init__(self, model, slot_type, weight, length, outer_diameter, inner_diameter, cal):
+        super().__init__(self.__doc__, model, slot_type, weight, length, outer_diameter, inner_diameter, cal)
 
 
 class Muzzle(Attachment):
     """Muzzle"""
 
-    def __init__(self, model, weight, length, outer_diameter, inner_diameter, cal):
-        super().__init__(self.__doc__, model, weight, length, outer_diameter, inner_diameter, cal)
+    def __init__(self, model, slot_type, weight, length, outer_diameter, inner_diameter, cal):
+        super().__init__(self.__doc__, model, slot_type, weight, length, outer_diameter, inner_diameter, cal)

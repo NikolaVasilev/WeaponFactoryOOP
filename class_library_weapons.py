@@ -1,3 +1,4 @@
+
 class Weapon:
     """Weapon"""
 
@@ -23,19 +24,30 @@ class FireArms(Weapon):
         self.type_of_sight = type_of_sight
         self.cal = cal
         self.series = series
-        # TODO add and remove methods, I also have to add implementation of injector class for attachments(suppressors,
-        #  muzzles and others.)
 
         Weapon.__init__(self, manufacture, serial_number, weapon_type)
 
-    _list_of_attachments = []
-    
+    _slot_attachments = {
+        'barrel': None,
+        'under_barrel': None,
+        'sight': None
+    }
+
+    def _is_slot_empty(self, type_of_slot: str):
+        return True if not self._slot_attachments[type_of_slot] else False
+
     def description(self):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
 
     def _make_some_noise(self):
-        print('PEW PEW PEW PEW') if not self._list_of_attachments else print('sup sup sup .... :D')
+        print('PEW PEW PEW PEW') if self._is_slot_empty('barrel') and self._slot_attachments['barrel'].__doc__ == 'Suppressor' else print('sup sup sup .... :D')
         return self
+
+    def remove_attachment(self, attachment: str):
+        self._slot_attachments[attachment]._is_mounted = False
+        attachment = self._slot_attachments[attachment]
+        self._slot_attachments[attachment] = None
+        return attachment
 
 
 class ColdBladedWeapon(Weapon):

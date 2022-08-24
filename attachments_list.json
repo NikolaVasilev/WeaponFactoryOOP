@@ -3,6 +3,7 @@
     "Suppressor": [
       {
         "model": "SomeModel",
+        "slot_type": 1,
         "weight": 5,
         "length": 70,
         "outer_diameter": 20,
@@ -15,6 +16,7 @@
     "Muzzle": [
       {
         "model": "SomeModel",
+        "slot_type": 1,
         "weight": 5,
         "length": 70,
         "outer_diameter": 20,

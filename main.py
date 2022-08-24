@@ -34,6 +34,7 @@ def run():
 
     suppressor_args = {
         "model": "SomeModel",
+        "slot_type": 1,
         "weight": 5,
         "length": 70,
         "outer_diameter": 20,
@@ -42,7 +43,8 @@ def run():
     }
 
     weapon = Injector(class_dict_weapons[2][1], weapon_args, class_dict_attachments[1][1], suppressor_args).init_and_inject_weapon_attachment()
-    print(weapon._list_of_attachments[0]._is_mounted_as_string())
+    print(weapon._make_some_noise())
+    # remove suppressor
 
     # ================================================================================
 

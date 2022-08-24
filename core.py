@@ -4,6 +4,7 @@ import sys
 import pyautogui
 from WeaponFactoryOOP.class_library_weapons import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 from WeaponFactoryOOP.class_library_attachments import Suppressor, Muzzle
+from enums import SlotTypes
 
 
 # this will be useful if we save instances in json or db and load it from there
@@ -17,10 +18,10 @@ class Injector:
 
     def init_and_inject_weapon_attachment(self):
         new_weapon = self.weapon(**self.weapon_args)
-        new_attribute = self.attribute(**self.attribute_args)
-        new_attribute._is_mounted = True
-        new_attribute._weapon = f'{new_weapon.weapon_type} "{new_weapon.manufacture}{new_weapon.series} - {new_weapon.model}'
-        new_weapon._list_of_attachments.append(new_attribute)
+        new_attachment = self.attribute(**self.attribute_args)
+        new_attachment._is_mounted = True
+        new_attachment._weapon = f'{new_weapon.weapon_type} "{new_weapon.manufacture}{new_weapon.series} - {new_weapon.model}'
+        new_weapon._slot_attachments[str(new_attachment._slot_type)] = new_attachment
         return new_weapon
 
 
@@ -28,22 +29,12 @@ class Injector:
 
 gun = FireArms(manufacture='CZ', serial_number='45464', model='SP-01 Shadow', weapon_type='Gun', cal='9x19',
                   type_of_sight='fiber optic', series='75')
-sup = Suppressor('some model', 5, 5, 5, 5, '9x19')
-
-gun._make_some_noise()
-
-gun._list_of_attachments.append(sup)
-
-gun._list_of_attachments[0]._is_mounted = True
-
-gun._list_of_attachments[0]._weapon = 'CZ75 SP-01 Shadow'
-
-gun._make_some_noise()
-
-print(gun._list_of_attachments[0]._is_mounted_as_string())
+sup = Suppressor('some model', 1, 5, 5, 5, 5, '9x19')
 
 
 # ================================================
+
+
 def get_cls_members(class_library_module):
     return [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
             member[1].__module__ == class_library_module]
