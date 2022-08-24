@@ -1,4 +1,3 @@
-
 class Weapon:
     """Weapon"""
 
@@ -19,7 +18,8 @@ class Weapon:
 class FireArms(Weapon):
     """Firearms"""
 
-    def __init__(self, manufacture: str, serial_number: str, model: str, weapon_type: str, cal: str, type_of_sight: str, series=''):
+    def __init__(self, manufacture: str, serial_number: str, model: str, weapon_type: str, cal: str, type_of_sight: str,
+                 series=''):
         self.model = model
         self.type_of_sight = type_of_sight
         self.cal = cal
@@ -34,20 +34,21 @@ class FireArms(Weapon):
     }
 
     def _is_slot_empty(self, type_of_slot: str):
-        return True if not self._slot_attachments[type_of_slot] else False
+        return True if self._slot_attachments[type_of_slot] is None else False
 
     def description(self):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
 
     def _make_some_noise(self):
-        print('PEW PEW PEW PEW') if self._is_slot_empty('barrel') and self._slot_attachments['barrel'].__doc__ == 'Suppressor' else print('sup sup sup .... :D')
+        print('sup sup sup .... :D') if not (self._is_slot_empty('barrel')) and (
+                self._slot_attachments['barrel'].__doc__ == 'Suppressor') else print('PEW PEW PEW PEW')
         return self
 
     def remove_attachment(self, attachment: str):
         self._slot_attachments[attachment]._is_mounted = False
-        attachment = self._slot_attachments[attachment]
+        weapon_attachment = self._slot_attachments[attachment]
         self._slot_attachments[attachment] = None
-        return attachment
+        return weapon_attachment
 
 
 class ColdBladedWeapon(Weapon):

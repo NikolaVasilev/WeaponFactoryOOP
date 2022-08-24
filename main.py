@@ -44,7 +44,9 @@ def run():
 
     weapon = Injector(class_dict_weapons[2][1], weapon_args, class_dict_attachments[1][1], suppressor_args).init_and_inject_weapon_attachment()
     print(weapon._make_some_noise())
-    # remove suppressor
+    list_of_attachment_objects.append(weapon.remove_attachment('barrel'))
+    print(weapon._make_some_noise())
+
 
     # ================================================================================
 
