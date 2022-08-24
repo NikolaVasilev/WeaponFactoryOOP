@@ -4,7 +4,6 @@ import sys
 import pyautogui
 from WeaponFactoryOOP.class_library_weapons import Weapon, FireArms, ColdBladedWeapon, Axe, Sword
 from WeaponFactoryOOP.class_library_attachments import Suppressor, Muzzle
-from enums import SlotTypes
 
 
 # this will be useful if we save instances in json or db and load it from there
