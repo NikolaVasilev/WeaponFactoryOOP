@@ -3,6 +3,7 @@ import json
 import pyautogui
 
 from WeaponFactoryOOP.core import create_instance
+from WeaponFactoryOOP.enums import SlotTypes
 from WeaponFactoryOOP.validations import test_input_value, ValueLowError, ValueHighError
 
 
@@ -16,6 +17,9 @@ def seed(list_of_objects, class_dict, file_name):
 
             for object in objects:
                 dto = object
+
+                if 'slot_type' in dto:
+                    dto['slot_type'] = SlotTypes(dto['slot_type'])
 
                 instance_object = create_instance(instance_weapon_class, dto)
                 list_of_objects.append(instance_object)

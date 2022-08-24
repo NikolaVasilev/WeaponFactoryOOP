@@ -1,6 +1,7 @@
 import pyautogui
 
 from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index, Injector
+from WeaponFactoryOOP.enums import SlotTypes
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
     input_command
 
@@ -34,7 +35,7 @@ def run():
 
     suppressor_args = {
         "model": "SomeModel",
-        "slot_type": 1,
+        "slot_type": SlotTypes.BARREL,
         "weight": 5,
         "length": 70,
         "outer_diameter": 20,

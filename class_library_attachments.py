@@ -4,7 +4,7 @@ from WeaponFactoryOOP.enums import SlotTypes
 
 
 class Base(ABC):
-    def __init__(self, type: str, model: str, slot_type: int, weight: float, length: float, outer_diameter: float,
+    def __init__(self, type: str, model: str, slot_type: SlotTypes, weight: float, length: float, outer_diameter: float,
                  inner_diameter: float, cal: str):
         self._type = type
         self._model = model
@@ -13,7 +13,7 @@ class Base(ABC):
         self._outer_diameter = outer_diameter
         self._inner_diameter = inner_diameter
         self._cal = cal
-        self._slot_type = SlotTypes(slot_type)
+        self._slot_type = slot_type
         self._is_mounted = False
 
     @abstractmethod
