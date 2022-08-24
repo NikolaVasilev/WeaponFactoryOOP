@@ -40,7 +40,7 @@ class FireArms(Weapon):
         return f'{self.weapon_type} "{self.manufacture}{self.series} - {self.model}" is "{self.cal}" caliber and have a {self.type_of_sight} type of sight '
 
     def _make_some_noise(self):
-        print('sup sup sup .... :D') if not (self._is_slot_empty('barrel')) and (
+        print('sup sup sup .... :D') if not self._is_slot_empty('barrel') and (
                 self._slot_attachments['barrel'].__doc__ == 'Suppressor') else print('PEW PEW PEW PEW')
         return self
 
