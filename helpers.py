@@ -13,7 +13,7 @@ def seed(list_of_objects, class_dict, file_name):
 
         for object_class in data:
             class_name, objects = list(object_class.items())[0]
-            instance_weapon_class = [weapon_class for weapon_class in class_dict if weapon_class[0] == class_name][0][1]
+            instance_class = [object_class for object_class in class_dict if object_class[0] == class_name][0][1]
 
             for object in objects:
                 dto = object
@@ -21,7 +21,7 @@ def seed(list_of_objects, class_dict, file_name):
                 if 'slot_type' in dto:
                     dto['slot_type'] = SlotTypes(dto['slot_type'])
 
-                instance_object = create_instance(instance_weapon_class, dto)
+                instance_object = create_instance(instance_class, dto)
                 list_of_objects.append(instance_object)
 
         file.close()

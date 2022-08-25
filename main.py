@@ -27,12 +27,10 @@ def run():
         if input_data == '1':
             # this will clear pycharm console - you need to set shortcut for
             # 'clear all' option in preferences, otherwise you have use oc.system() method
-
-            # this should be putted in appropriate methods ========================================================
             pyautogui.hotkey('ctrl', ';')
 
+            # this should be putted in appropriate method ========================================================
             exit_option = display_text_create_menu(create_menu_weapons)
-
             input_data = input_command((1, exit_option))
 
             if input_data == str(exit_option):
@@ -42,7 +40,6 @@ def run():
 
             # create instance and return to main menu
             create_instance_by_index(input_data, class_dict_weapons, create_menu_weapons, list_of_weapon_objects)
-
             pyautogui.hotkey('ctrl', ';')
             input_data = ''
             display_main_menu()
