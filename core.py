@@ -24,16 +24,6 @@ class Injector:
         return new_weapon
 
 
-# Temporary Test of functionality =========================================
-
-gun = FireArms(manufacture='CZ', serial_number='45464', model='SP-01 Shadow', weapon_type='Gun', cal='9x19',
-                  type_of_sight='fiber optic', series='75')
-sup = Suppressor('some model', 1, 5, 5, 5, 5, '9x19')
-
-
-# ================================================
-
-
 def get_cls_members(class_library_module):
     return [member for member in inspect.getmembers(sys.modules[__name__], inspect.isclass) if
             member[1].__module__ == class_library_module]

@@ -1,7 +1,6 @@
 import pyautogui
 
-from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index, Injector
-from WeaponFactoryOOP.enums import SlotTypes
+from WeaponFactoryOOP.core import get_classes_dictionary, create_instance_by_index
 from WeaponFactoryOOP.helpers import seed, display_main_menu, display_text_create_menu, list_instances_menu, \
     input_command
 
@@ -21,44 +20,15 @@ def run():
     seed(list_of_weapon_objects, class_dict_weapons, weapons_json_file)
     seed(list_of_attachment_objects, class_dict_attachments, attachments_json_file)
 
-    # Temporary Test of functionality =========================================
-
-    weapon_args = {
-        "manufacture": "CZ",
-        "serial_number": "5765fhh5A668",
-        "model": "SP-01 SHADOW",
-        "weapon_type": "Gun",
-        "cal": "9x19",
-        "type_of_sight": "fiber optic",
-        "series": "75"
-    }
-
-    suppressor_args = {
-        "model": "SomeModel",
-        "slot_type": SlotTypes.BARREL,
-        "weight": 5,
-        "length": 70,
-        "outer_diameter": 20,
-        "inner_diameter": 9,
-        "cal": "9x19"
-    }
-
-    weapon = Injector(class_dict_weapons[2][1], weapon_args, class_dict_attachments[1][1], suppressor_args).init_and_inject_weapon_attachment()
-    weapon._make_some_noise()
-    list_of_attachment_objects.append(weapon.remove_attachment('barrel'))
-    weapon._make_some_noise()
-
-
-    # ================================================================================
-
     display_main_menu()
-
     input_data = input_command((1, 3))
 
     while input_data != 'stop':
         if input_data == '1':
-            # this clear pycharm console - you need to set shortcut for
+            # this will clear pycharm console - you need to set shortcut for
             # 'clear all' option in preferences, otherwise you have use oc.system() method
+
+            # this should be putted in appropriate methods ========================================================
             pyautogui.hotkey('ctrl', ';')
 
             exit_option = display_text_create_menu(create_menu_weapons)
@@ -76,6 +46,8 @@ def run():
             pyautogui.hotkey('ctrl', ';')
             input_data = ''
             display_main_menu()
+
+            # -----===========================================================================================------
 
         if input_data == '2':
             # list of instances and operations with them
