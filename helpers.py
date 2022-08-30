@@ -24,7 +24,6 @@ def seed(list_of_objects, class_dict, file_name):
                 instance_object = create_instance(instance_class, dto)
                 list_of_objects.append(instance_object)
 
-        file.close()
     return list_of_objects
 
 
